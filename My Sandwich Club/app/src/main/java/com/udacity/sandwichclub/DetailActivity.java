@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -65,6 +66,7 @@ public class DetailActivity extends AppCompatActivity {
         populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
+                .placeholder(R.mipmap.ic_launcher_round)
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
@@ -76,8 +78,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich currentSandwich) {
-        // there might not be AKA or an origin, and so replacement text is useful
-        mAlsoKnownAsView.setText(JoinStringListWithCommas(currentSandwich.getAlsoKnownAs()));
+        mAlsoKnownAsView.setText(JoinStringList(", ", currentSandwich.getAlsoKnownAs()));
         if(mAlsoKnownAsView.getText().toString().isEmpty()){
             mAlsoKnownAsView.setText(R.string.AKA_replacement);
         }
@@ -87,28 +88,29 @@ public class DetailActivity extends AppCompatActivity {
             mOriginView.setText(R.string.origin_replacement);
         }
 
-        // but there will always be ingredients and a description
-        mIngredientsView.setText(JoinStringListWithCommas(currentSandwich.getIngredients()));
+        mIngredientsView.setText(JoinStringList(", ", currentSandwich.getIngredients()));
+        if(mIngredientsView.getText().toString().isEmpty()){
+            mIngredientsView.setText(R.string.ingredients_replacement);
+        }
+
         mDescriptionView.setText(currentSandwich.getDescription());
+        if(mDescriptionView.getText().toString().isEmpty()){
+            mDescriptionView.setText(R.string.description_replacement);
+        }
     }
 
     //
     // as the name suggests, it joins together the elements of List of Strings
     // into a single string with commas
     //
-    // implemented directly because apparently using String.join requires at least API level 26
-    // and I don't feel comfortable with altering minimum requirements at this point
-    private String JoinStringListWithCommas(List<String> inputList) {
+    //
+    // TextUtils.join fails when a null list is passed in
+    // (rather than return a null string, as I'd want)
+    // so this handles that case differently
+    //
+    private String JoinStringList(String delim, List<String> inputList) {
         if(inputList != null && inputList.size() > 0){
-            String joined = "";
-            for(int i = 0; i < inputList.size(); i++){
-                if(joined != ""){
-                    joined += ", ";
-                }
-                joined += inputList.get(i);
-            }
-
-            return joined;
+            return TextUtils.join(delim, inputList);
         }
         return null;
     }

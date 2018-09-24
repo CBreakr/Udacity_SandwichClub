@@ -1,5 +1,6 @@
 package com.udacity.sandwichclub.utils;
 
+import com.udacity.sandwichclub.R;
 import com.udacity.sandwichclub.model.Sandwich;
 
 import org.json.JSONArray;
@@ -53,12 +54,12 @@ public class JsonUtils {
 
             // main name
             JSONObject jsonName = jsonSandwich.getJSONObject(nameKey);
-            parsedSandwich.setMainName(jsonName.getString(mainNameKey));
+            parsedSandwich.setMainName(jsonName.optString(mainNameKey, ""));
 
             // also known as
-            JSONArray jsonAlsoKnownAs = jsonName.getJSONArray(alsoKnownAsKey);
+            JSONArray jsonAlsoKnownAs = jsonName.optJSONArray(alsoKnownAsKey);
 
-            if(jsonAlsoKnownAs.length() > 0) {
+            if(jsonAlsoKnownAs != null && jsonAlsoKnownAs.length() > 0) {
                 List<String> AKA_List = new ArrayList<String>();
 
                 for (int i = 0; i < jsonAlsoKnownAs.length(); i++) {
@@ -69,18 +70,18 @@ public class JsonUtils {
             }
 
             // origin
-            parsedSandwich.setPlaceOfOrigin(jsonSandwich.getString(placeOfOriginKey));
+            parsedSandwich.setPlaceOfOrigin(jsonSandwich.optString(placeOfOriginKey, ""));
 
             // description
-            parsedSandwich.setDescription(jsonSandwich.getString(descriptionKey));
+            parsedSandwich.setDescription(jsonSandwich.optString(descriptionKey, ""));
 
             // image
-            parsedSandwich.setImage(jsonSandwich.getString(imageKey));
+            parsedSandwich.setImage(jsonSandwich.optString(imageKey, ""));
 
             // ingredients
-            JSONArray jsonIngredients = jsonSandwich.getJSONArray(ingredientsKey);
+            JSONArray jsonIngredients = jsonSandwich.optJSONArray(ingredientsKey);
 
-            if(jsonIngredients.length() > 0) {
+            if(jsonIngredients != null && jsonIngredients.length() > 0) {
                 List<String> Ingredients_List = new ArrayList<String>();
 
                 for(int i = 0; i < jsonIngredients.length(); i++){

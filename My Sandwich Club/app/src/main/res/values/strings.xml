@@ -13,9 +13,11 @@
     <!-- Error messages-->
     <string name="detail_error_message">Sandwich data not available</string>
 
-    <!-- Replacement text for empty origin or also-known-as -->
+    <!-- Replacement text for empty JSON values -->
     <string name="AKA_replacement">No known aliases</string>
     <string name="origin_replacement">Unknown</string>
+    <string name="ingredients_replacement">No ingredients available</string>
+    <string name="description_replacement">No description available</string>
 
     <string-array name="sandwich_names">
         <item>Ham and cheese sandwich</item>
@@ -107,8 +109,9 @@
         </item>
 
         <!--
-        this file returns a 404, the replacement wiki photo isn't great, but it functions
-        https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Shawarmafood.jpg/800px-Shawarmafood.jpg
+        this file returns a 404
+        this is a potential replacement, but I'll use a placeholder for now
+        https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Al-Naser_Resturant.jpg/800px-Al-Naser_Resturant.jpg
         -->
 
         <item>{\"name\":{\"mainName\":\"Shawarma\",\"alsoKnownAs\":[]},\"placeOfOrigin\":\"Middle East,
@@ -120,7 +123,7 @@
             (generally with accompaniments), or as a sandwich or wrap. Shawarma is usually eaten
             with tabbouleh, fattoush, taboon bread, tomato, and cucumber. Toppings include tahini,
             hummus, pickled turnips, and
-            amba.\",\"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Al-Naser_Resturant.jpg/800px-Al-Naser_Resturant.jpg\",\"ingredients\":[\"Shawarma
+            amba.\",\"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Shawarmafood.jpg/800px-Shawarmafood.jpg\",\"ingredients\":[\"Shawarma
             meat (lamb, chicken, turkey, beef) or shawarma falafel\",\"Pita or wrap
             bread\",\"Chopped or shredded vegetables\",\"Pickles\",\"Assorted condiments\"]}
         </item>

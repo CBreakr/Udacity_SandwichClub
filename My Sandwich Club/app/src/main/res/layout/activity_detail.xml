@@ -6,23 +6,23 @@
     android:layout_height="match_parent"
     tools:context="com.udacity.sandwichclub.DetailActivity">
 
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/image_iv"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/sandwich_picture_content_description"
-                    android:scaleType="centerCrop"
-                    android:layout_marginBottom="5dp"/>
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/image_iv"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/sandwich_picture_content_description"
+                            android:scaleType="centerCrop"
+                            android:layout_marginBottom="5dp"/>
 
                         <android.support.v7.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
@@ -78,8 +78,9 @@
                                     android:layout_height="wrap_content" />
                         </android.support.v7.widget.LinearLayoutCompat>
 
-                </ScrollView>
+            </android.support.v7.widget.LinearLayoutCompat>
 
-        </android.support.v7.widget.LinearLayoutCompat>
+        </ScrollView>
+
 
 </FrameLayout>
